@@ -1,0 +1,36 @@
+html {
+	font-size: 15px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	overflow: hidden;
+}
+
+#keyboard {
+	position: absolute;
+	bottom: 0;
+	z-index: 1;
+	width: 100%;
+}
+
+.keyboard-row {
+	width: 100%;
+	margin-bottom: 0.5em;
+	white-space: nowrap;
+}
+
+.keyboard-key {
+	font-size: 18px;
+	-moz-box-sizing: border-box;
+	padding: 0 0.1rem;
+	min-width: 2.6rem;
+	display: inline-block;
+	height: 4rem;
+	width: 4rem;
+}
+
