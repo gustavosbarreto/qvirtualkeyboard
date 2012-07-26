@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/">
+    <file>html/index.html</file>
+    <file>html/js/keyboard.js</file>
+    <file>html/js/layouts/pt_BR.js</file>
+    <file>html/css/keyboard.css</file>
+    <file>html/3rdparty/js/jquery-1.7.2.min.js</file>
+  </qresource>
+</RCC>
