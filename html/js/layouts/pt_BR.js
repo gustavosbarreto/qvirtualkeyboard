@@ -28,7 +28,7 @@ window.Keyboards['pt_BR'] = {
 
 		[
 			{ label: '?123' },
-			{ label: '&nbsp', ratio: 8, key: 'space' },
+			{ label: '&nbsp', ratio: 7, key: 'space' },
 			{ label: '↵', ratio: 2, key: 'Return' }
 		]
 	]
