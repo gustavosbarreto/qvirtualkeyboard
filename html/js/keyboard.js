@@ -25,6 +25,6 @@ window.onload = function() {
 	});*/
 
 	$('button').click(function() {
-		
+		x11.sendKey($(this).data('key'));
 	});
 }
