@@ -11,7 +11,7 @@ window.Keyboards['pt_BR'] = {
 
 		[
 			{ label: 'a', alt: { 'á': 'aacute', 'à': 'agrave', 'ã': 'atilde' } }, { label: 's' }, { label: 'd' }, { label: 'f' }, { label: 'g' },
-			{ label: 'h' }, { label: 'j' }, { label: 'k' }, { label: 'l' }, { label: 'ç' }
+			{ label: 'h' }, { label: 'j' }, { label: 'k' }, { label: 'l' }, { label: 'ç', code: 'ccedilla' }
 		],
 
 		[
