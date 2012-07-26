@@ -15,20 +15,6 @@ window.onload = function() {
 		$('#keyboard').append(keyboardRow);
 	});
 
-/*
-	$('button').mousedown(function() {
-		$(this).data('pressed', true);
-
-		setTimeout(function() {
-			if ($(this).data('pressed')) {
-			}
-		}.bind(this), 400);
-	});
-
-	$('button').mouseup(function() {
-		$(this).data('pressed', false);
-	});*/
-
 	$('button').click(function() {
 		var key = $(this).data('key');
 

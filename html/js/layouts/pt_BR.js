@@ -2,11 +2,6 @@ window.Keyboards = window.Keyboards || {};
 
 window.Keyboards['pt_BR'] = {
 	main: [
-/*		[
-			{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' },
-			{ label: '6' }, { label: '7' }, { label: '8' }, { label: '9' }, { label: '0' }
-		],
-*/
 		[
 			{ label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'eacute', 'è': 'egrave', 'ê': 'ecircumflex' } },
 			{ label: 'r' }, { label: 't' }, { label: 'y' }, { label: 'u', alt: { 'ú': 'uacute' } },
