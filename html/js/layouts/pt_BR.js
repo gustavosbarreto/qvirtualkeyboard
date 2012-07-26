@@ -1,12 +1,12 @@
 window.Keyboards = window.Keyboards || {};
 
 window.Keyboards['pt_BR'] = {
-	main: [
+	mainLayout: [
 		[
 			{ label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'eacute', 'è': 'egrave', 'ê': 'ecircumflex' } },
 			{ label: 'r' }, { label: 't' }, { label: 'y' }, { label: 'u', alt: { 'ú': 'uacute' } },
-			{ label: 'i', alt: [ { label: 'í', key: 'iacute' } ] },
-			{ label: 'o', alt: [ { label: 'ó', key: 'oacute' }, { label: 'õ', key: 'otilde' }, { label: 'ô', key: 'ocircumflex' } ] }, { label: 'p' }
+			{ label: 'i', alt: [ { label: 'í', code: 'iacute' } ] },
+			{ label: 'o', alt: [ { label: 'ó', code: 'oacute' }, { label: 'õ', code: 'otilde' }, { label: 'ô', code: 'ocircumflex' } ] }, { label: 'p' }
 		],
 
 		[
@@ -15,16 +15,16 @@ window.Keyboards['pt_BR'] = {
 		],
 
 		[
-			{ label: '⇪', ratio: 1.5, key: 'Caps_Lock' },
+			{ label: '⇪', ratio: 1.5, code: 'Caps_Lock' },
 			{ label: 'z' }, { label: 'x' }, { label: 'c' }, { label: 'v' },
 			{ label: 'b' }, { label: 'n' }, { label: 'm' },
-			{ label: '⌫', ratio: 1.5, key: 'BackSpace' }
+			{ label: '⌫', ratio: 1.5, code: 'BackSpace' }
 		],
 
 		[
-			{ label: '?123' },
-			{ label: '&nbsp', ratio: 7, key: 'space' },
-			{ label: '↵', ratio: 2, key: 'Return' }
+			{ label: '?123', changeLayoutKey: true, layout: 'symbolLayout' },
+			{ label: '&nbsp', ratio: 7, code: 'space' },
+			{ label: '↵', ratio: 2, code: 'Return' }
 		]
 	]
 };
