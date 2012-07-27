@@ -12,6 +12,7 @@ public:
 
 public slots:
 	void sendKey(const QString &key);
+	void resizeWindow(int width, int height);
 };
 
 #endif

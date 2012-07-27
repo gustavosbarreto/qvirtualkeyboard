@@ -16,6 +16,8 @@ var View = {
 
 			$('#keyboard').append(keyboardRow);
 		});
+
+		x11.resizeWindow(keyboardWidth, $('#keyboard').height());
 	}
 };
 
