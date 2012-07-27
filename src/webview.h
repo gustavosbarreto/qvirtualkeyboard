@@ -8,7 +8,7 @@ class WebView: public QWebView
 	Q_OBJECT
 
 public:
-	WebView(QWidget *parent = 0);
+	WebView(QWidget *parent, bool popup = false);
 };
 
 class WebPage: public QWebPage

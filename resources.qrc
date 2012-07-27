@@ -1,7 +1,9 @@
 <RCC>
   <qresource prefix="/">
     <file>html/index.html</file>
+    <file>html/alt.html</file>
     <file>html/js/keyboard.js</file>
+    <file>html/js/alt.js</file>
     <file>html/js/view.js</file>
     <file>html/js/layouts/pt_BR.js</file>
     <file>html/css/keyboard.css</file>
