@@ -21,9 +21,7 @@ body {
 
 
 #alternative-keys-keyboard {
-	position: absolute;
-	bottom: 0;
-	z-index: 1;
+	background-color: #ccc;
 }
 
 .keyboard-row {

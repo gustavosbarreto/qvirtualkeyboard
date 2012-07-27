@@ -12,9 +12,7 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 
 	setAttribute(Qt::WA_X11DoNotAcceptFocus);
 	setAttribute(Qt::WA_TranslucentBackground, true);
-	setAttribute(Qt::WA_OpaquePaintEvent, false);
-
-	setFocusPolicy(Qt::NoFocus);
+	//setAttribute(Qt::WA_OpaquePaintEvent, false);
 
 	if (!popup) {
 		setPage(new WebPage(this));
@@ -45,11 +43,6 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 		webView->setFixedSize(0, 0);
 		webView->show();
 	}
-
-	QPalette newPalette = palette();
-	newPalette.setBrush(QPalette::Base, Qt::transparent);
-	setPalette(newPalette);
-
 }
 
 void WebPage::adjustSize(int height, int width)
