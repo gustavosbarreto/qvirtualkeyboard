@@ -18,6 +18,9 @@ class WebPage: public QWebPage
 public:
 	WebPage(QObject *parent, bool popup = false);
 
+public slots:
+	void adjustSize(int height, int width);
+
 private slots:
 	void closeWebView();
 

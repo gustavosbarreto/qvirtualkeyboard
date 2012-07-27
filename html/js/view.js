@@ -22,3 +22,4 @@ var View = {
 };
 
 global.View = View;
+

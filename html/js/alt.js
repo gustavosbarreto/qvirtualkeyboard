@@ -5,13 +5,18 @@ window.onload = function() {
 
 	for (var label in alternativeKeys) {
 		var buttonKey = $('<button class="keyboard-key alphabetical-key"/>');
+		buttonKey.data('code', alternativeKeys[label]);
 		buttonKey.append($('<span>' + label + '</span>'));
-		//buttonKey.css('width', placeHolderWidth * (key.ratio || 1));
+		buttonKey.css('width', 30);
 		keyboardRow.append(buttonKey);
 	}
 
 	$('#alternative-keys-keyboard').append(keyboardRow);
 
-	window.resizeTo($('#alternative-keys-keyboard').width(), $('#alternative-keys-keyboard').height());
+	webView.adjustSize($('#alternative-keys-keyboard').width(), $('#alternative-keys-keyboard').height());
+
+	$('button').mouseup(function() {
+		window.opener.alternativeKeyClicked($(this).data('code'));
+	});
 }
 

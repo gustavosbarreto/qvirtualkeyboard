@@ -3,10 +3,12 @@
 
 #include <QWebFrame>
 #include <QHBoxLayout>
+#include <QDebug>
+#include <QSizePolicy>
 
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
-	setWindowFlags(Qt::X11BypassWindowManagerHint);
+	//setWindowFlags(Qt::X11BypassWindowManagerHint);
 	setAttribute(Qt::WA_X11DoNotAcceptFocus);
 	setFocusPolicy(Qt::NoFocus);
 
@@ -28,18 +30,26 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 		WebView *webView = new WebView(NULL, true);
 		webView->setAttribute(Qt::WA_DeleteOnClose);
 		webView->setPage(this);
-		webView->show();
 
 		connect(webView->page(), SIGNAL(windowCloseRequested()), SLOT(closeWebView()));
+
+		webView->show();
 	}
+}
+
+void WebPage::adjustSize(int height, int width)
+{
+	view()->setFixedSize(height, width);
 }
 
 void WebPage::closeWebView() {
 	qobject_cast<QWebView *>(view())->close();
 }
 
+
 QWebPage *WebPage::createWindow(QWebPage::WebWindowType type)
 {
-	//QWebPage::createWindow(type);
-	return new WebPage(NULL, true);
+	WebPage *page = new WebPage(NULL, true);
+	page->mainFrame()->addToJavaScriptWindowObject("webView", page);
+	return page;
 }

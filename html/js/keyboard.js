@@ -63,4 +63,6 @@ const Keyboard = function() {
 
 window.onload = function() { Keyboard() };
 
-
+window.alternativeKeyClicked = function(keyCode) {
+	alert(keyCode);
+}
