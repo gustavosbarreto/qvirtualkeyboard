@@ -12,6 +12,7 @@ public:
 
 public slots:
 	void sendKey(const QString &key);
+	void sendComposedKey(const QString &baseKey, const QString &altKey);
 	void resizeWindow(int width, int height);
 };
 

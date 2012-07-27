@@ -3,14 +3,14 @@ window.Keyboards = window.Keyboards || {};
 window.Keyboards['pt_BR'] = {
 	mainLayout: [
 		[
-			{ label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'eacute', 'è': 'egrave', 'ê': 'ecircumflex' } },
-			{ label: 'r' }, { label: 't' }, { label: 'y' }, { label: 'u', alt: { 'ú': 'uacute' } },
-			{ label: 'i', alt: [ { label: 'í', code: 'iacute' } ] },
-			{ label: 'o', alt: [ { label: 'ó', code: 'oacute' }, { label: 'õ', code: 'otilde' }, { label: 'ô', code: 'ocircumflex' } ] }, { label: 'p' }
+			{ label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'dead_acute', 'è': 'dead_grave', 'ê': 'dead_circumflex' } },
+			{ label: 'r' }, { label: 't' }, { label: 'y' }, { label: 'u', alt: { 'ú': 'dead_acute' } },
+			{ label: 'i', alt: [ { label: 'í', code: 'dead_acute' } ] },
+			{ label: 'o', alt: [ { label: 'ó', code: 'dead_acute' }, { label: 'õ', code: 'dead_tilde' }, { label: 'ô', code: 'dead_circumflex' } ] }, { label: 'p' }
 		],
 
 		[
-			{ label: 'a', alt: { 'á': 'aacute', 'à': 'agrave', 'ã': 'atilde' } }, { label: 's' }, { label: 'd' }, { label: 'f' }, { label: 'g' },
+			{ label: 'a', alt: { 'á': 'dead_acute', 'à': 'dead_grave', 'ã': 'dead_tilde' } }, { label: 's' }, { label: 'd' }, { label: 'f' }, { label: 'g' },
 			{ label: 'h' }, { label: 'j' }, { label: 'k' }, { label: 'l' }, { label: 'ç', code: 'ccedilla' }
 		],
 

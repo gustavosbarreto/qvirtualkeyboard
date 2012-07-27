@@ -56,9 +56,9 @@ const Keyboard = (function() {
 
 		},
 
-		sendAlternativeKey: function(keyCode) {
+		sendAlternativeKey: function(altKeyCode) {
 			altPopup = 0;
-			x11.sendKey(keyCode);
+			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		}
 	}
 
