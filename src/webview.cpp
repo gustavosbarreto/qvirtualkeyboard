@@ -8,7 +8,7 @@
 
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
-	//setWindowFlags(Qt::X11BypassWindowManagerHint);
+	setWindowFlags(Qt::X11BypassWindowManagerHint);
 	setAttribute(Qt::WA_X11DoNotAcceptFocus);
 	setFocusPolicy(Qt::NoFocus);
 
@@ -33,12 +33,14 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 
 		connect(webView->page(), SIGNAL(windowCloseRequested()), SLOT(closeWebView()));
 
+		webView->setFixedSize(0, 0);
 		webView->show();
 	}
 }
 
 void WebPage::adjustSize(int height, int width)
 {
+	view()->move(QCursor::pos());
 	view()->setFixedSize(height, width);
 }
 
