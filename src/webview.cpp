@@ -24,6 +24,7 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 		WebView *webView = new WebView;
 		webView->setAttribute(Qt::WA_DeleteOnClose);
 		webView->setPage(this);
+		webView->setWindowFlags(Qt::ToolTip);
 		webView->show();
 		connect(webView->page(), SIGNAL(windowCloseRequested()), SLOT(closeWebView()));
 	}
