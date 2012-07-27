@@ -17,6 +17,7 @@ window.onload = function() {
 
 	$('button').mouseup(function() {
 		window.opener.alternativeKeyClicked($(this).data('code'));
+		window.close();
 	});
 }
 

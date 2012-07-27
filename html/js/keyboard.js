@@ -5,6 +5,7 @@ function isSpecialKey(key) {
 const Keyboard = function() {
 	var isPressing = false;
 	var capsLockLocked = false;
+	var altPopup = 0;
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
@@ -12,6 +13,11 @@ const Keyboard = function() {
 	View.showKeyboard('pt_BR', 'mainLayout');
 
 	$('button').mousedown(function() {
+		if (altPopup) {
+			altPopup.close();
+			altPopup = 0;
+		}
+
 		var key = $(this).data('key');
 		var isPressing = true;
 		currentKeyCode = key.code || key.label;
@@ -43,7 +49,7 @@ const Keyboard = function() {
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
-		var altPopup = window.open('qrc:///html/alt.html');
+		altPopup = window.open('qrc:///html/alt.html');
 	}
 
 	/*$('button').click(function() {
