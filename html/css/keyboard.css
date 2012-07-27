@@ -13,10 +13,10 @@ body {
 }
 
 #keyboard {
-	position: absolute;
-	bottom: 0;
-	z-index: 1;
-	width: 100%;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	background-color: #ccc;
+	padding: 20px;
 }
 
 

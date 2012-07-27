@@ -9,7 +9,11 @@
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
 	setWindowFlags(Qt::X11BypassWindowManagerHint);
+
 	setAttribute(Qt::WA_X11DoNotAcceptFocus);
+	setAttribute(Qt::WA_TranslucentBackground, true);
+	setAttribute(Qt::WA_OpaquePaintEvent, false);
+
 	setFocusPolicy(Qt::NoFocus);
 
 	if (!popup) {
@@ -21,6 +25,11 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 		load(QUrl("qrc:///html/index.html"));
 		page()->mainFrame()->addToJavaScriptWindowObject("x11", new X11(this));
 	}
+
+
+	QPalette newPalette = palette();
+	newPalette.setBrush(QPalette::Base, Qt::transparent);
+	setPalette(newPalette);
 }
 
 WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
@@ -36,6 +45,11 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 		webView->setFixedSize(0, 0);
 		webView->show();
 	}
+
+	QPalette newPalette = palette();
+	newPalette.setBrush(QPalette::Base, Qt::transparent);
+	setPalette(newPalette);
+
 }
 
 void WebPage::adjustSize(int height, int width)

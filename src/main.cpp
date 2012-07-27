@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 
 	WebView *view = new WebView(NULL);
 	view->show();
-	view->move(500, 500);
+	view->move(200, 400);
 
 	return app.exec();
 }
