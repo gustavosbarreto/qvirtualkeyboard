@@ -13,20 +13,20 @@ const Keyboard = function() {
 
 	$('button').mousedown(function() {
 		var key = $(this).data('key');
-		var keyCode = key.code || key.label;
 		var isPressing = true;
+		currentKeyCode = key.code || key.label;
 
 		altPopupTimeout = setTimeout(function() {
 			if (key.alt)
 				showAlternativeKeys(key);
 		}, 600);
 
-		if (keyCode == 'BackSpace') {
-			x11.sendKey(keyCode);
+		if (currentKeyCode == 'BackSpace') {
+			x11.sendKey(currentKeyCode);
 
 			backSpaceTimeout = setTimeout(function() {
 				backSpaceInterval = setInterval(function() {
-					x11.sendKey(keyCode);
+					x11.sendKey(currentKeyCode);
 				}, 100);
 			}, 600);
 		}
@@ -36,6 +36,9 @@ const Keyboard = function() {
 		clearTimeout(altPopupTimeout);
 		clearTimeout(backSpaceTimeout);
 		clearInterval(backSpaceInterval);
+
+		if (currentKeyCode != 'BackSpace')
+			x11.sendKey(currentKeyCode);
 	});
 
 	function showAlternativeKeys(key) {
