@@ -2,7 +2,7 @@ function isSpecialKey(key) {
 	return !/^[a-z\u00C0-\u00ff]+$/.test(key);
 }
 
-const Keyboard = function() {
+const Keyboard = (function() {
 	var isPressing = false;
 	var capsLockLocked = false;
 	var altPopup = 0;
@@ -10,46 +10,56 @@ const Keyboard = function() {
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
 
-	View.showKeyboard('pt_BR', 'mainLayout');
-
-	$('button').mousedown(function() {
-		if (altPopup) {
-			altPopup.close();
-			altPopup = 0;
-		}
-
-		var key = $(this).data('key');
-		var isPressing = true;
-		currentKeyCode = key.code || key.label;
-
-		altPopupTimeout = setTimeout(function() {
-			if (key.alt)
-				showAlternativeKeys(key);
-		}, 600);
-
-		if (currentKeyCode == 'BackSpace') {
-			x11.sendKey(currentKeyCode);
-
-			backSpaceTimeout = setTimeout(function() {
-				backSpaceInterval = setInterval(function() {
-					x11.sendKey(currentKeyCode);
-				}, 100);
-			}, 600);
-		}
-	});
-
-	$('button').mouseup(function() {
-		clearTimeout(altPopupTimeout);
-		clearTimeout(backSpaceTimeout);
-		clearInterval(backSpaceInterval);
-
-		if (currentKeyCode != 'BackSpace')
-			x11.sendKey(currentKeyCode);
-	});
-
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
 		altPopup = window.open('qrc:///html/alt.html');
+	}
+
+	return {
+		initialize: function() {
+			View.showKeyboard('pt_BR', 'mainLayout');
+
+			$('button').mousedown(function() {
+				if (altPopup) {
+					altPopup.close();
+					altPopup = 0;
+				}
+
+				var key = $(this).data('key');
+				var isPressing = true;
+				currentKeyCode = key.code || key.label;
+
+				altPopupTimeout = setTimeout(function() {
+					if (key.alt)
+						showAlternativeKeys(key);
+				}, 600);
+
+				if (currentKeyCode == 'BackSpace') {
+					x11.sendKey(currentKeyCode);
+
+					backSpaceTimeout = setTimeout(function() {
+						backSpaceInterval = setInterval(function() {
+							x11.sendKey(currentKeyCode);
+						}, 100);
+					}, 600);
+				}
+			});
+
+			$('button').mouseup(function() {
+				clearTimeout(altPopupTimeout);
+				clearTimeout(backSpaceTimeout);
+				clearInterval(backSpaceInterval);
+
+				if (currentKeyCode != 'BackSpace')
+					x11.sendKey(currentKeyCode);
+			});
+
+		},
+
+		sendAlternativeKey: function(keyCode) {
+			altPopup = 0;
+			x11.sendKey(keyCode);
+		}
 	}
 
 	/*$('button').click(function() {
@@ -65,10 +75,10 @@ const Keyboard = function() {
 
 		x11.sendKey(keyCode);
 	});*/
-}
+})();
 
-window.onload = function() { Keyboard() };
+window.onload = function() { Keyboard.initialize(); };
 
 window.alternativeKeyClicked = function(keyCode) {
-	alert(keyCode);
+	Keyboard.sendAlternativeKey(keyCode);
 }
