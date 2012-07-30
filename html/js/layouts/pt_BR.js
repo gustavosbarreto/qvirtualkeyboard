@@ -33,8 +33,14 @@ window.Keyboards['pt_BR'] = {
 			{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }, { label: '7' }, { label: '8' }, { label: '9' }, { label: '0' }
 		],
 
+
 		[
-			{ label: 'ABC', isLayoutSwitcher: true, layout: 'mainLayout', ratio: 10 }
+			{ label: '-', code: 'minus' }, { label: '+', code: 'plus', shift: true }, { label: '=', code: 'equal' }, { label: '#', code: '' }, { label: '/', code: 'slash' }, { label: '&' }, { label: ':' }, { label: ';' }, { label: '%', code: 'percent', shift: true }, { label: '$', code: 'dollar', shift: true }
+		],
+
+
+		[
+			{ label: 'ABC', isLayoutSwitcher: true, layout: 'mainLayout', ratio: 5 }, { label: '?' }, { label: '.', code: 'period' }, { label: ',', code: 'comma' }, { label: '@' }, { label: '!' }
 		]
 	]
 };
