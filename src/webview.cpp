@@ -5,6 +5,8 @@
 #include <QHBoxLayout>
 #include <QDebug>
 #include <QSizePolicy>
+#include <QApplication>
+#include <QDesktopWidget>
 
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
@@ -21,6 +23,7 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 		settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
 
 		load(QUrl("qrc:///html/index.html"));
+		page()->mainFrame()->addToJavaScriptWindowObject("webView", this);
 		page()->mainFrame()->addToJavaScriptWindowObject("x11", new X11(this));
 	}
 
@@ -28,6 +31,12 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 	QPalette newPalette = palette();
 	newPalette.setBrush(QPalette::Base, Qt::transparent);
 	setPalette(newPalette);
+}
+
+void WebView::setPosition()
+{
+	QRect rect =  QApplication::desktop()->availableGeometry();
+	move((rect.width() - width()) / 2, rect.height() - height());
 }
 
 WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)

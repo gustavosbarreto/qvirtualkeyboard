@@ -64,23 +64,12 @@ const Keyboard = (function() {
 			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		}
 	}
-
-	/*$('button').click(function() {
-		var key = $(this).data('key');
-		var keyCode = key.code || key.label;
-
-		if (key.changeLayoutKey) {
-			return;
-		}
-
-		if (keyCode == "Caps_Lock")
-			$('#keyboard').find('button.alphabetical-key').find('span').css('text-transform', ((capsLockLocked = !capsLockLocked) ? 'uppercase' : 'lowercase'));
-
-		x11.sendKey(keyCode);
-	});*/
 })();
 
-window.onload = function() { Keyboard.initialize(); };
+window.onload = function() {
+	Keyboard.initialize();
+	webView.setPosition();
+};
 
 window.alternativeKeyClicked = function(keyCode) {
 	Keyboard.sendAlternativeKey(keyCode);

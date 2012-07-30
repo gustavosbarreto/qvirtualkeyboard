@@ -9,6 +9,9 @@ class WebView: public QWebView
 
 public:
 	WebView(QWidget *parent, bool popup = false);
+
+public slots:
+	void setPosition();
 };
 
 class WebPage: public QWebPage
