@@ -22,9 +22,19 @@ window.Keyboards['pt_BR'] = {
 		],
 
 		[
-			{ label: '?123', changeLayoutKey: true, layout: 'symbolLayout' },
+			{ label: '?123', isLayoutSwitcher: true, layout: 'alternativeLayout' },
 			{ label: '&nbsp', ratio: 7, code: 'space' },
 			{ label: '↵', ratio: 2, code: 'Return' }
+		]
+	],
+
+	alternativeLayout: [
+		[
+			{ label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }, { label: '7' }, { label: '8' }, { label: '9' }, { label: '0' }
+		],
+
+		[
+			{ label: 'ABC', isLayoutSwitcher: true, layout: 'mainLayout', ratio: 10 }
 		]
 	]
 };

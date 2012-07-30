@@ -9,6 +9,7 @@ const Keyboard = (function() {
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
+	var currentKey = null;
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
@@ -17,21 +18,19 @@ const Keyboard = (function() {
 
 	return {
 		initialize: function() {
-			View.showKeyboard('pt_BR', 'mainLayout');
-
 			$('button').mousedown(function() {
 				if (altPopup) {
 					altPopup.close();
 					altPopup = 0;
 				}
 
-				var key = $(this).data('key');
+				currentKey = $(this).data('key');
 				var isPressing = true;
-				currentKeyCode = key.code || key.label;
+				currentKeyCode = currentKey.code || currentKey.label;
 
 				altPopupTimeout = setTimeout(function() {
-					if (key.alt)
-						showAlternativeKeys(key);
+					if (currentKey.alt)
+						showAlternativeKeys(currentKey);
 				}, 600);
 
 				if (currentKeyCode == 'BackSpace') {
@@ -50,6 +49,14 @@ const Keyboard = (function() {
 				clearTimeout(altPopupTimeout);
 				clearInterval(backSpaceInterval);
 
+
+				if (currentKey.isLayoutSwitcher) {
+					$('#keyboard').children('div').remove();
+					View.showKeyboard('pt_BR', currentKey.layout);
+					Keyboard.initialize();
+					return;
+				}
+
 				if (currentKeyCode == "Caps_Lock")
 					$('#keyboard').find('button.alphabetical-key').find('span').css('text-transform', ((capsLockLocked = !capsLockLocked) ? 'uppercase' : 'lowercase'));
 
@@ -67,6 +74,7 @@ const Keyboard = (function() {
 })();
 
 window.onload = function() {
+	View.showKeyboard('pt_BR', 'mainLayout');
 	Keyboard.initialize();
 	webView.setPosition();
 };
