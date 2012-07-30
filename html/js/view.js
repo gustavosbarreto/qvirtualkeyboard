@@ -18,6 +18,12 @@ var View = {
 		});
 
 		x11.resizeWindow(keyboardWidth + 40, $('#keyboard').height() + 40);
+
+		this.updateLabelCase();
+	},
+
+	updateLabelCase: function() {
+		$('#keyboard').find('button.alphabetical-key').find('span').css('text-transform', (Keyboard.isCapsLocked() ? 'uppercase' : 'lowercase'));
 	}
 };
 

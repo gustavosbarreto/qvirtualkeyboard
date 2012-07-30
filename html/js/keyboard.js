@@ -4,7 +4,7 @@ function isSpecialKey(key) {
 
 const Keyboard = (function() {
 	var isPressing = false;
-	var capsLockLocked = false;
+	var capsLocked = false;
 	var altPopup = 0;
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;
@@ -57,8 +57,10 @@ const Keyboard = (function() {
 					return;
 				}
 
-				if (currentKeyCode == "Caps_Lock")
-					$('#keyboard').find('button.alphabetical-key').find('span').css('text-transform', ((capsLockLocked = !capsLockLocked) ? 'uppercase' : 'lowercase'));
+				if (currentKeyCode == "Caps_Lock") {
+					capsLocked = !capsLocked;
+					View.updateLabelCase();
+				}
 
 				if (currentKeyCode != 'BackSpace')
 					x11.sendKey(currentKeyCode);
@@ -69,7 +71,9 @@ const Keyboard = (function() {
 		sendAlternativeKey: function(altKeyCode) {
 			altPopup = 0;
 			x11.sendComposedKey(currentKeyCode, altKeyCode);
-		}
+		},
+
+		isCapsLocked: function() { return capsLocked; }
 	}
 })();
 
