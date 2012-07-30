@@ -19,7 +19,7 @@ public:
 	WebPage(QObject *parent, bool popup = false);
 
 public slots:
-	void adjustSize(int height, int width);
+	void adjustSize(int width, int height);
 
 private slots:
 	void closeWebView();

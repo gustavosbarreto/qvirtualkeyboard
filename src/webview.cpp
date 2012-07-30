@@ -40,15 +40,14 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 
 		connect(webView->page(), SIGNAL(windowCloseRequested()), SLOT(closeWebView()));
 
-		webView->setFixedSize(0, 0);
 		webView->show();
 	}
 }
 
-void WebPage::adjustSize(int height, int width)
+void WebPage::adjustSize(int width, int height)
 {
 	view()->move(QCursor::pos());
-	view()->setFixedSize(height, width);
+	view()->setFixedSize(width, height);
 }
 
 void WebPage::closeWebView() {

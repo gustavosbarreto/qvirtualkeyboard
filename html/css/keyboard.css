@@ -19,15 +19,22 @@ body {
 	padding: 20px;
 }
 
-
 #alternative-keys-keyboard {
-	background-color: #ccc;
+	display: inline-block;
+	border: 1px solid transparent;
+	padding: 6px;
+	border-radius: 4px;
+	background-color: black;
 }
 
 .keyboard-row {
 	width: 100%;
 	margin-bottom: 0.5em;
 	white-space: nowrap;
+}
+
+.keyboard-row:last-child {
+	margin-bottom: 0;
 }
 
 .keyboard-key {

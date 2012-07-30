@@ -14,6 +14,7 @@ window.onload = function() {
 	$('#alternative-keys-keyboard').append(keyboardRow);
 
 	webView.adjustSize($('#alternative-keys-keyboard').width(), $('#alternative-keys-keyboard').height());
+	webView.adjustSize(document.body.scrollWidth, document.body.scrollHeight);
 
 	$('button').mouseup(function() {
 		window.opener.alternativeKeyClicked($(this).data('code'));
