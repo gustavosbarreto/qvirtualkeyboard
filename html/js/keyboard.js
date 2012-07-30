@@ -5,7 +5,7 @@ function isSpecialKey(key) {
 const Keyboard = (function() {
 	var isPressing = false;
 	var capsLocked = false;
-	var altPopup = 0;
+	var alternativesPopup = 0;
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
@@ -13,15 +13,15 @@ const Keyboard = (function() {
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
-		altPopup = window.open('qrc:///html/alt.html');
+		alternativesPopup = window.open('qrc:///html/alt.html');
 	}
 
 	return {
 		initialize: function() {
 			$('button').mousedown(function() {
-				if (altPopup) {
-					altPopup.close();
-					altPopup = 0;
+				if (alternativesPopup) {
+					alternativesPopup.close();
+					alternativesPopup = null;
 				}
 
 				currentKey = $(this).data('key');
@@ -49,6 +49,8 @@ const Keyboard = (function() {
 				clearTimeout(altPopupTimeout);
 				clearInterval(backSpaceInterval);
 
+				if (alternativesPopup)
+					return;
 
 				if (currentKey.isLayoutSwitcher) {
 					$('#keyboard').children('div').remove();
@@ -69,7 +71,7 @@ const Keyboard = (function() {
 		},
 
 		sendAlternativeKey: function(altKeyCode) {
-			altPopup = 0;
+			alternativesPopup = null;
 			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		},
 
