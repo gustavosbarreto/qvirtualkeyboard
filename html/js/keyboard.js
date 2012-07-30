@@ -46,9 +46,12 @@ const Keyboard = (function() {
 			});
 
 			$('button').mouseup(function() {
-				clearTimeout(altPopupTimeout);
 				clearTimeout(backSpaceTimeout);
+				clearTimeout(altPopupTimeout);
 				clearInterval(backSpaceInterval);
+
+				if (currentKeyCode == "Caps_Lock")
+					$('#keyboard').find('button.alphabetical-key').find('span').css('text-transform', ((capsLockLocked = !capsLockLocked) ? 'uppercase' : 'lowercase'));
 
 				if (currentKeyCode != 'BackSpace')
 					x11.sendKey(currentKeyCode);
