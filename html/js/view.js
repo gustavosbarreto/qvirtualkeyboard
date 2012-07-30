@@ -7,7 +7,7 @@ var View = {
 		Keyboards[language][layout].forEach(function(row, i) {
 			var keyboardRow = $('<div class="keyboard-row"/>');
 			row.forEach(function(key, x) {
-				var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) ? ' alphabetical-key' : '') + '"/>');
+				var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) && !key.isLayoutSwitcher ? ' alphabetical-key' : '') + '"/>');
 				buttonKey.data('key', key);
 				buttonKey.append($('<span>' + key.label + '</span>'));
 				buttonKey.css('width', placeHolderWidth * (key.ratio || 1));
