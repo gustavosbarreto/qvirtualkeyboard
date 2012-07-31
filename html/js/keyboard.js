@@ -1,7 +1,3 @@
-function isSpecialKey(key) {
-	return !/^[a-z\u00C0-\u00ff]+$/.test(key);
-}
-
 const Keyboard = (function() {
 	var capsLocked = false;
 	var alternativesPopup = 0;
@@ -15,6 +11,7 @@ const Keyboard = (function() {
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
+        window.isCapsLocked = capsLocked;
 		alternativesPopup = window.open('qrc:///html/alt.html');
 	}
 
