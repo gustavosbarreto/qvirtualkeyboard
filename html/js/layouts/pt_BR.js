@@ -5,10 +5,10 @@ window.Keyboards['pt_BR'] = {
 
     mainLayout: [
         [
-            { label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'dead_acute', 'è': 'dead_grave', 'ê': 'dead_circumflex' } },
+            { label: 'q' }, { label: 'w' }, { label: 'e', alt: { 'é': 'dead_acute', 'ê': 'dead_circumflex' } },
             { label: 'r' }, { label: 't' }, { label: 'y' }, { label: 'u', alt: { 'ú': 'dead_acute' } },
-            { label: 'i', alt: [ { label: 'í', code: 'dead_acute' } ] },
-            { label: 'o', alt: [ { label: 'ó', code: 'dead_acute' }, { label: 'õ', code: 'dead_tilde' }, { label: 'ô', code: 'dead_circumflex' } ] }, { label: 'p' }
+            { label: 'i', alt: { 'í': 'dead_acute' } },
+            { label: 'o', alt: { 'ó': 'dead_acute', 'õ': 'dead_tilde', 'ô': 'dead_circumflex' } }, { label: 'p' }
         ],
 
         [
