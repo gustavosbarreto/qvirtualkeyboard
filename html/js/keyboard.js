@@ -79,7 +79,6 @@ const Keyboard = (function() {
 					return;
 
 				if (currentKey.isLayoutSwitcher) {
-					$('#keyboard').children('div').remove();
 					View.showKeyboard(currentKey.layout);
 					Keyboard.bindKeys();
 					return;

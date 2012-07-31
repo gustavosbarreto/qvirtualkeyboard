@@ -1,5 +1,7 @@
 var View = {
 	showKeyboard: function(layout) {
+		$('#keyboard').children('div').remove();
+
 		var layoutWidth = 10;
 		var keyboardWidth = $('#keyboard').width();
 		var placeHolderWidth = keyboardWidth / layoutWidth;
