@@ -1,5 +1,5 @@
 const Keyboard = (function() {
-	var capsLocked = false;
+	var capsLocked = x11.isCapsLocked();
 	var alternativesPopup = 0;
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;

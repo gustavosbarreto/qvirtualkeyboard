@@ -5,7 +5,9 @@
 #include <QDebug>
 
 #include <X11/extensions/XTest.h>
+#include <X11/extensions/XKB.h>
 #include <X11/keysym.h>
+#include <X11/XKBlib.h>
 
 X11::X11(QObject *parent): QObject(parent)
 {
@@ -36,4 +38,12 @@ void X11::sendComposedKey(const QString &baseKey, const QString &altKey, bool sh
 void X11::resizeWindow(int width, int height)
 {
 	qobject_cast<QWidget *>(parent())->setFixedSize(width, height);
+}
+
+bool X11::isCapsLocked()
+{
+    Bool state;
+    Atom capsLock = XInternAtom(QX11Info::display(), "Caps Lock", False);
+    XkbGetNamedIndicator(QX11Info::display(), capsLock, NULL, &state, NULL, NULL);
+    return state;
 }
