@@ -24,7 +24,15 @@ body {
 	border: 1px solid transparent;
 	padding: 6px;
 	border-radius: 4px;
-	background-color: black;
+	background-color: #333;
+}
+
+#alternative-keys-keyboard .keyboard-key {
+	margin-right: 4px;
+}
+
+#alternative-keys-keyboard .keyboard-key:last-child {
+	margin-right: 0;
 }
 
 .keyboard-row {
@@ -47,3 +55,6 @@ body {
 	width: 4rem;
 }
 
+.keyboard-key:last-child {
+	margin-right: 0;
+}
