@@ -10,14 +10,16 @@ const Keyboard = (function() {
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
 	var currentKey = null;
+    var language = "";
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
 		alternativesPopup = window.open('qrc:///html/alt.html');
 	}
 
+    // public methods
 	return {
-		initialize: function() {
+		bindKeys: function() {
 			$('button').mousedown(function() {
 				if (alternativesPopup) {
 					alternativesPopup.close();
@@ -54,8 +56,8 @@ const Keyboard = (function() {
 
 				if (currentKey.isLayoutSwitcher) {
 					$('#keyboard').children('div').remove();
-					View.showKeyboard('pt_BR', currentKey.layout);
-					Keyboard.initialize();
+					View.showKeyboard(currentKey.layout);
+					Keyboard.bindKeys();
 					return;
 				}
 
@@ -75,13 +77,19 @@ const Keyboard = (function() {
 			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		},
 
-		isCapsLocked: function() { return capsLocked; }
+		isCapsLocked: function() { return capsLocked; },
+
+        setLanguage: function(lang) { language = lang; },
+        language: function() { return language; },
 	}
 })();
 
 window.onload = function() {
-	View.showKeyboard('pt_BR', 'mainLayout');
-	Keyboard.initialize();
+    Keyboard.setLanguage('pt_BR');
+
+	View.showKeyboard('mainLayout');
+
+	Keyboard.bindKeys();
 	webView.setPosition();
 };
 

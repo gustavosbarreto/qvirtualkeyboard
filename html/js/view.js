@@ -1,10 +1,10 @@
 var View = {
-	showKeyboard: function(language, layout) {
+	showKeyboard: function(layout) {
 		var layoutWidth = 10;
 		var keyboardWidth = $('#keyboard').width();
 		var placeHolderWidth = keyboardWidth / layoutWidth;
 
-		Keyboards[language][layout].forEach(function(row, i) {
+		Keyboards[Keyboard.language()][layout].forEach(function(row, i) {
 			var keyboardRow = $('<div class="keyboard-row"/>');
 			row.forEach(function(key, x) {
 				var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) && !key.isLayoutSwitcher ? ' alphabetical-key' : '') + '"/>');
