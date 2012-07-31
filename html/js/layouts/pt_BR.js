@@ -1,24 +1,7 @@
 window.Keyboards = window.Keyboards || {};
 
 window.Keyboards['pt_BR'] = {
-//    modMap: {
-//        shift: [ 'dead_grave' ]
-//    }
-//
-/*
-        dead_grave: { shift: true },
-        dead_circumflex: { shift: true },
-        plus: { shift: true },
-        numbersign: { shift: true },
-        ampersand: { shift: true },
-        colon: { shift: true },
-        percent: { shift: true },
-        dollar: { shift: true },
-        exclam: { shift: true }
-        at
-        question
-    },
-*/
+    shift: [ 'dead_grave', 'dead_circumflex', 'plus', 'numbersign', 'ampersand', 'colon', 'percent', 'dollar', 'exclam', 'at', 'question' ],
 
     mainLayout: [
         [

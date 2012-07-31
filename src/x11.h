@@ -11,8 +11,8 @@ public:
 	X11(QObject *parent);
 
 public slots:
-	void sendKey(const QString &key);
-	void sendComposedKey(const QString &baseKey, const QString &altKey);
+	void sendKey(const QString &key, bool shift = false);
+	void sendComposedKey(const QString &baseKey, const QString &altKey, bool shift = false);
 	void resizeWindow(int width, int height);
 };
 

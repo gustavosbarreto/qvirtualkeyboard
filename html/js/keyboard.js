@@ -17,6 +17,26 @@ const Keyboard = (function() {
 		alternativesPopup = window.open('qrc:///html/alt.html');
 	}
 
+    function sendKey(key) {
+        var keyCode = ((typeof key == 'object') ? key.code || key.label : key);
+        var shift = Keyboards[language].shift.indexOf(keyCode) != -1;
+
+        var deadKey = currentKey.code != keyCode;
+
+        if (!deadKey) {
+            if (!shift)
+                x11.sendKey(keyCode);
+            else
+                x11.sendKey(keyCode, true);
+        }
+        else {
+            if (!shift)
+			    x11.sendComposedKey(currentKeyCode, keyCode);
+            else
+			    x11.sendComposedKey(currentKeyCode, keyCode, true);
+        }
+    }
+
     // public methods
 	return {
 		bindKeys: function() {
@@ -36,11 +56,11 @@ const Keyboard = (function() {
 				}, 600);
 
 				if (currentKeyCode == 'BackSpace') {
-					x11.sendKey(currentKeyCode);
+					sendKey(currentKey);
 
 					backSpaceTimeout = setTimeout(function() {
 						backSpaceInterval = setInterval(function() {
-							x11.sendKey(currentKeyCode);
+							sendKey(currentKey);
 						}, 100);
 					}, 600);
 				}
@@ -67,14 +87,15 @@ const Keyboard = (function() {
 				}
 
 				if (currentKeyCode != 'BackSpace')
-					x11.sendKey(currentKeyCode);
+					sendKey(currentKey);
 			});
 
 		},
 
 		sendAlternativeKey: function(altKeyCode) {
 			alternativesPopup = null;
-			x11.sendComposedKey(currentKeyCode, altKeyCode);
+            sendKey(altKeyCode);
+//			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		},
 
 		isCapsLocked: function() { return capsLocked; },
