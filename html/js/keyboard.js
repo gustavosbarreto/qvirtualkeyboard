@@ -3,14 +3,15 @@ function isSpecialKey(key) {
 }
 
 const Keyboard = (function() {
-	var isPressing = false;
 	var capsLocked = false;
 	var alternativesPopup = 0;
 	var altPopupTimeout = 0;
 	var backSpaceInterval = 0;
 	var backSpaceTimeout = 0;
 	var currentKey = null;
+    var currentKeyCode = null;
     var language = "";
+    var view = null;
 
 	function showAlternativeKeys(key) {
 		window.alternativeKeys = key.alt;
@@ -79,14 +80,14 @@ const Keyboard = (function() {
 					return;
 
 				if (currentKey.isLayoutSwitcher) {
-					View.showKeyboard(currentKey.layout);
+					view.showKeyboard(currentKey.layout);
 					Keyboard.bindKeys();
 					return;
 				}
 
 				if (currentKeyCode == "Caps_Lock") {
 					capsLocked = !capsLocked;
-					View.updateLabelCase();
+					view.updateLabelCase();
 				}
 
 				if (currentKeyCode != 'BackSpace')
@@ -94,6 +95,14 @@ const Keyboard = (function() {
 			});
 
 		},
+
+        setView: function(value) {
+            view = value;
+        },
+
+        showLayout: function(layout) {
+            view.showKeyboard(layout);
+        },
 
 		sendAlternativeKey: function(altKeyCode) {
 			alternativesPopup = null;
@@ -110,9 +119,10 @@ const Keyboard = (function() {
 window.onload = function() {
     Keyboard.setLanguage('pt_BR');
 
-	View.showKeyboard('mainLayout');
-
+    Keyboard.setView(new View($('#keyboard')));
+    Keyboard.showLayout('mainLayout');
 	Keyboard.bindKeys();
+
 	webView.setPosition();
 };
 
