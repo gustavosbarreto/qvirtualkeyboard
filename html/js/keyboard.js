@@ -41,6 +41,10 @@ const Keyboard = (function() {
 	return {
 		bindKeys: function() {
 			$('button').mousedown(function() {
+				clearTimeout(backSpaceTimeout);
+				clearTimeout(altPopupTimeout);
+				clearInterval(backSpaceInterval);
+
 				if (alternativesPopup) {
 					alternativesPopup.close();
 					alternativesPopup = null;
