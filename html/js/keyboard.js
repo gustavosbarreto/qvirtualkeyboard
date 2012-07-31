@@ -18,10 +18,10 @@ const Keyboard = (function() {
 	}
 
     function sendKey(key) {
-        var keyCode = ((typeof key == 'object') ? key.code || key.label : key);
+        var keyCode = ((typeof key == 'object') ? currentKeyCode : key);
         var shift = Keyboards[language].shift.indexOf(keyCode) != -1;
 
-        var deadKey = currentKey.code != keyCode;
+        var deadKey = currentKeyCode != keyCode;
 
         if (!deadKey) {
             if (!shift)
@@ -95,7 +95,6 @@ const Keyboard = (function() {
 		sendAlternativeKey: function(altKeyCode) {
 			alternativesPopup = null;
             sendKey(altKeyCode);
-//			x11.sendComposedKey(currentKeyCode, altKeyCode);
 		},
 
 		isCapsLocked: function() { return capsLocked; },
