@@ -44,7 +44,7 @@ const View = function(el) {
 			el.css('width', keyboardWidth);
 
             if (!window.opener)
-		        x11.resizeWindow(keyboardWidth + 40, el.height() + 40);
+		        x11.resizeWindow(el.outerWidth(), el.outerHeight());
 
 		    this.updateLabelCase();
 	    },
