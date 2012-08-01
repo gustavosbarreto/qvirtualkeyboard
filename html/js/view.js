@@ -8,8 +8,8 @@ const View = function(el) {
 		    el.children('div').remove();
 
 		    var layoutWidth = 10;
-		    var keyboardWidth = el.width();
-		    var placeHolderWidth = keyboardWidth / layoutWidth;
+		    var placeHolderWidth = parseInt(el.width() / layoutWidth);
+		    var keyboardWidth = placeHolderWidth * layoutWidth - 6;
 
             if (typeof layout == 'object') {
 			    var keyboardRow = $('<div class="keyboard-row"/>');
@@ -26,16 +26,22 @@ const View = function(el) {
 		        Keyboards[Keyboard.language()][layout].forEach(function(row, i) {
 			        var keyboardRow = $('<div class="keyboard-row"/>');
 			        row.forEach(function(key, x) {
-				        var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) && !key.isLayoutSwitcher ? ' alphabetical-key' : '') + '"/>');
+				        var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) && !key.isLayoutSwitcher ? ' alphabetical-key' : ' special-key') + '"/>');
 				        buttonKey.data('key', key);
 				        buttonKey.append($('<span>' + key.label + '</span>'));
-				        buttonKey.css('width', placeHolderWidth * (key.ratio || 1));
+						if (key.ratio)
+				        	buttonKey.css('width', (placeHolderWidth * key.ratio) - 6);
+						else
+							buttonKey.css('width', placeHolderWidth - 6);
+
 				        keyboardRow.append(buttonKey);
 			        });
                     
 			        el.append(keyboardRow);
 		        });
             }
+
+			el.css('width', keyboardWidth);
 
             if (!window.opener)
 		        x11.resizeWindow(keyboardWidth + 40, el.height() + 40);
