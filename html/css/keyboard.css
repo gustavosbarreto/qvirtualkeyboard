@@ -12,19 +12,20 @@ body {
 	overflow: hidden;
 }
 
+
 #keyboard {
 	border: 1px solid transparent;
 	border-radius: 10px;
-	background-color: #ccc;
-	padding: 20px;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#9098A3), to(#454f5d));
+	padding: 10px;
 }
 
 #alternative-keys-keyboard {
 	display: inline-block;
 	border: 1px solid transparent;
-	padding: 6px;
+	padding: 10px;
 	border-radius: 4px;
-	background-color: #333;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f9), to(#dddfe1));
 }
 
 #alternative-keys-keyboard .keyboard-key {
@@ -36,7 +37,7 @@ body {
 }
 
 .keyboard-row {
-	width: 100%;
+    width: 100%;
 	margin-bottom: 0.5em;
 	white-space: nowrap;
 }
@@ -46,15 +47,36 @@ body {
 }
 
 .keyboard-key {
-	font-size: 18px;
-	-moz-box-sizing: border-box;
-	padding: 0 0.1rem;
-	min-width: 2.6rem;
-	display: inline-block;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	text-shadow:0 1px 1px #fff;
+	font-weight:bold;
 	height: 4rem;
 	width: 4rem;
+	margin-right: 6px;
+	padding: 0 0.1rem;
+	display: inline-block;
+    border: 0;
+	border-top: 1px solid rgba(255,255,255,.45);		
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f9), to(#dddfe1));
+	-webkit-border-radius: 4px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 0 rgba(0,0,0,.3);
+}
+
+.keyboard-row .keyboard-key:last-child {
+    margin-right: 0px;
+}
+
+.special-key {
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#7f8792), to(#535b68));
+    color: #fff;
+	text-shadow:0 -1px 1px rgba(0,0,0,.5);
+}
+
+.keyboard-key:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#E2E3E4), to(#AAADB4));
 }
 
 .keyboard-key:last-child {
-	margin-right: 0;
+	margin-right: 0px;
 }
