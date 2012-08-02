@@ -3,13 +3,13 @@ function isSpecialKey(key) {
 }
 
 const View = function(el) {
+	var layoutWidth = 10;
+	var placeHolderWidth = parseInt(el.width() / layoutWidth);
+	var keyboardWidth = placeHolderWidth * layoutWidth - 6;
+
     return {
 	    showKeyboard: function(layout) {
 		    el.children('div').remove();
-
-		    var layoutWidth = 10;
-		    var placeHolderWidth = parseInt(el.width() / layoutWidth);
-		    var keyboardWidth = placeHolderWidth * layoutWidth - 6;
 
             if (typeof layout == 'object') {
 			    var keyboardRow = $('<div class="keyboard-row"/>');
