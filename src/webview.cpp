@@ -55,7 +55,10 @@ WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 
 void WebPage::adjustSize(int width, int height)
 {
-	view()->move(QCursor::pos());
+    QRect rect = QRect(QCursor::pos(), QSize(width, height));
+    rect.translate(QPoint(0, -height));
+    
+	view()->move(QPoint(rect.x(), rect.y()));
 	view()->setFixedSize(width, height);
 }
 
