@@ -1,7 +1,8 @@
 window.Keyboards = window.Keyboards || {};
 
 window.Keyboards['pt_BR'] = {
-    shift: [ 'dead_grave', 'dead_circumflex', 'plus', 'numbersign', 'ampersand', 'colon', 'percent', 'dollar', 'exclam', 'at', 'question' ],
+    shift: [ 'dead_grave', 'dead_circumflex', 'plus', 'numbersign', 'ampersand', 'colon', 'percent', 'dollar', 'exclam', 'at', 'question',
+             'asterisk', 'parenleft', 'parenright', 'braceleft', 'braceright', 'bar', 'underscore' ],
 
     mainLayout: [
         [
@@ -35,13 +36,17 @@ window.Keyboards['pt_BR'] = {
             { label: '1' }, { label: '2' }, { label: '3' }, { label: '4' }, { label: '5' }, { label: '6' }, { label: '7' }, { label: '8' }, { label: '9' }, { label: '0' }
         ],
 
-
         [
             { label: '-', code: 'minus' }, { label: '+', code: 'plus' }, { label: '=', code: 'equal' },
             { label: '#', code: 'numbersign' }, { label: '/', code: 'slash' }, { label: '&', code: 'ampersand' },
             { label: ':', code: 'colon' }, { label: ';', code: 'semicolon' }, { label: '%', code: 'percent' }, { label: '$', code: 'dollar' }
         ],
 
+        [
+            { label: '*', code: 'asterisk' }, { label: '(', code: 'parenleft' }, { label: ')', code: 'parenright' },
+            { label: '[', code: 'bracketleft' }, { label: ']', code: 'bracketright' }, { label: '{', code: 'braceleft' },
+            { label: '}', code: 'braceright' }, { label: '\\', code: 'backslash' }, { label: '|', code: 'bar' }, { label: '_', code: 'underscore' }
+        ],
 
         [
             { label: 'ABC', isLayoutSwitcher: true, layout: 'mainLayout', ratio: 5 }, { label: '?', code: 'question' },
