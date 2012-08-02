@@ -12,6 +12,7 @@ public:
 
 public slots:
 	void setPosition();
+    void toggle();
 };
 
 class WebPage: public QWebPage

@@ -39,6 +39,14 @@ void WebView::setPosition()
 	move((rect.width() - width()) / 2, rect.height() - height());
 }
 
+void WebView::toggle()
+{
+    if (isVisible())
+        hide();
+    else
+        show();
+}
+
 WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)
 {
 	if (popup)
