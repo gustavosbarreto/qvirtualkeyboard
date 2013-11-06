@@ -5,31 +5,31 @@
 
 class WebView: public QWebView
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WebView(QWidget *parent, bool popup = false);
+    WebView(QWidget *parent, bool popup = false);
 
 public slots:
-	void setPosition();
+    void setPosition();
     void toggle();
 };
 
 class WebPage: public QWebPage
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WebPage(QObject *parent, bool popup = false);
+    WebPage(QObject *parent, bool popup = false);
 
 public slots:
-	void adjustSize(int width, int height);
+    void adjustSize(int width, int height);
 
 private slots:
-	void closeWebView();
+    void closeWebView();
 
 protected:
-	QWebPage *createWindow(QWebPage::WebWindowType type);
+    QWebPage *createWindow(QWebPage::WebWindowType type);
 };
 
 #endif

@@ -7,17 +7,16 @@
 #include "tecladura_adaptor.h"
 
 int main(int argc, char *argv[]) {
-	QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-	WebView *view = new WebView(NULL);
-	view->show();
+    WebView *view = new WebView(NULL);
+    view->show();
 
     new TecladuraAdaptor(view);
 
-	QDBusConnection conn = QDBusConnection::sessionBus();
+    QDBusConnection conn = QDBusConnection::sessionBus();
     conn.registerService("ossystems.tecladura");
     conn.registerObject("/", view);
 
-	return app.exec();
+    return app.exec();
 }
-
