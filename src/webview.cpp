@@ -14,7 +14,6 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 
     setAttribute(Qt::WA_X11DoNotAcceptFocus);
     setAttribute(Qt::WA_TranslucentBackground, true);
-    //setAttribute(Qt::WA_OpaquePaintEvent, false);
 
     if (!popup) {
         setPage(new WebPage(this));
@@ -27,10 +26,11 @@ WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
         page()->mainFrame()->addToJavaScriptWindowObject("x11", new X11(this));
     }
 
-
     QPalette newPalette = palette();
     newPalette.setBrush(QPalette::Base, Qt::transparent);
-    setPalette(newPalette);
+    page()->setPalette(newPalette);
+
+    setAttribute(Qt::WA_OpaquePaintEvent, false);
 }
 
 void WebView::setPosition()

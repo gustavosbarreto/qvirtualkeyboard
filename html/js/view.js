@@ -2,14 +2,33 @@ function isSpecialKey(key) {
     return !/^[a-z\u00C0-\u00ff]+$/.test(key);
 }
 
+function getLayoutWidth(layout) {
+    var width = 0;
+
+    Keyboards[Keyboard.language()][layout].forEach(function(row, i) {
+        var w = 0;
+        row.forEach(function(key, j) {
+            w += 1 * (key.ratio ? key.ratio : 1);
+        });
+
+        if (w > width)
+            width = w;
+    });
+
+    return width;
+}
+
 const View = function(el) {
-    var layoutWidth = 10;
-    var placeHolderWidth = parseInt(el.width() / layoutWidth);
-    var keyboardWidth = placeHolderWidth * layoutWidth - 6;
+    var placeHolderWidth = -1;
 
     return {
         showKeyboard: function(layout) {
-            el.children('div').remove();
+            var layoutWidth = getLayoutWidth(layout);
+            if (placeHolderWidth == -1)
+                placeHolderWidth = parseInt(el.width() / layoutWidth);
+            var keyboardWidth = placeHolderWidth * layoutWidth - 6;
+
+            el.empty();
 
             if (typeof layout == 'object') {
                 var keyboardRow = $('<div class="keyboard-row"/>');
@@ -47,6 +66,8 @@ const View = function(el) {
                 x11.resizeWindow(el.outerWidth(), el.outerHeight());
 
             this.updateLabelCase();
+
+            webView.setPosition();
         },
 
         updateLabelCase: function() {
