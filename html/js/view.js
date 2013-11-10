@@ -47,7 +47,12 @@ const View = function(el) {
                     row.forEach(function(key, x) {
                         var buttonKey = $('<button class="keyboard-key' + (!isSpecialKey(key.code) && !key.isLayoutSwitcher ? ' alphabetical-key' : ' special-key') + '"/>');
                         buttonKey.data('key', key);
-                        buttonKey.append($('<span>' + key.label + '</span>'));
+                        if (key.label)
+                            buttonKey.append($('<span>' + key.label + '</span>'));
+                        else {
+                            buttonKey.addClass('spacer');
+                            buttonKey.append($('<span>&nbsp;</span>'));
+                        }
                         if (key.ratio)
                             buttonKey.css('width', (placeHolderWidth * key.ratio) - 6);
                         else

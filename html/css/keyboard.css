@@ -63,6 +63,12 @@ body {
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 0 rgba(0,0,0,.3);
 }
 
+.spacer {
+    border: 0;
+    background: none;
+    -webkit-box-shadow: none;
+}
+
 .keyboard-row .keyboard-key:last-child {
     margin-right: 0px;
 }
@@ -73,7 +79,7 @@ body {
     text-shadow:0 -1px 1px rgba(0,0,0,.5);
 }
 
-.keyboard-key:active {
+.keyboard-key:active:not(.spacer) {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#E2E3E4), to(#AAADB4));
 }
 

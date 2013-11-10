@@ -38,7 +38,7 @@ const Keyboard = (function() {
     // public methods
     return {
         bindKeys: function() {
-            $('button').mousedown(function() {
+            $('button:not(.spacer)').mousedown(function() {
                 clearTimeout(backSpaceTimeout);
                 clearTimeout(altPopupTimeout);
                 clearInterval(backSpaceInterval);
@@ -68,7 +68,7 @@ const Keyboard = (function() {
                 }
             });
 
-            $('button').mouseup(function() {
+            $('button:not(.spacer)').mouseup(function() {
                 clearTimeout(backSpaceTimeout);
                 clearTimeout(altPopupTimeout);
                 clearInterval(backSpaceInterval);
