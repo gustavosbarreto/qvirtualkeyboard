@@ -14,6 +14,7 @@ public slots:
     void setPosition();
     void toggle();
 
+    QString keyboardLayout();
     QStringList keyboardLayoutFiles();
 };
 

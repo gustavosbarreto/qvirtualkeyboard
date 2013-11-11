@@ -8,6 +8,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QDir>
+#include <QSettings>
 
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
@@ -46,6 +47,14 @@ void WebView::toggle()
         hide();
     else
         show();
+}
+
+QString WebView::keyboardLayout()
+{
+    QSettings userSettings(QSettings::UserScope, "tecladura", "tecladura");
+    QSettings systemSettings(QSettings::UserScope, "tecladura", "tecladura");
+
+    return (userSettings.childKeys().contains("layout") ? userSettings.value("layout").toString() : systemSettings.value("layout").toString());
 }
 
 QStringList WebView::keyboardLayoutFiles()

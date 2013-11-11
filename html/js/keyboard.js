@@ -120,7 +120,7 @@ window.onload = function() {
     for (var i in layouts) {
         $.getScript(layouts[i], function() {
             if (++loadedLayouts == layouts.length) {
-                Keyboard.setLanguage('pt_BR');
+                Keyboard.setLanguage(webView.keyboardLayout());
 
                 Keyboard.setView(new View($('#keyboard')));
                 Keyboard.showLayout('mainLayout');
