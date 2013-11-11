@@ -7,6 +7,7 @@
 #include <QSizePolicy>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QDir>
 
 WebView::WebView(QWidget *parent, bool popup): QWebView(parent)
 {
@@ -45,6 +46,15 @@ void WebView::toggle()
         hide();
     else
         show();
+}
+
+QStringList WebView::keyboardLayoutFiles()
+{
+    QStringList files = QDir(QApplication::applicationDirPath() + "/../share/tecladura/layouts/").entryList(QStringList() << "*.js");
+    foreach (const QString &fileName, files)
+        files.append("file://" + QApplication::applicationDirPath() + "/../share/tecladura/layouts/" + fileName);
+
+    return files.mid(files.size()/2, files.size()/2);
 }
 
 WebPage::WebPage(QObject *parent, bool popup): QWebPage(parent)

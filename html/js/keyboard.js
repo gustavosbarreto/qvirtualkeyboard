@@ -114,13 +114,22 @@ const Keyboard = (function() {
 })();
 
 window.onload = function() {
-    Keyboard.setLanguage('pt_BR');
+    var layouts = webView.keyboardLayoutFiles();
+    var loadedLayouts = 0;
 
-    Keyboard.setView(new View($('#keyboard')));
-    Keyboard.showLayout('mainLayout');
-    Keyboard.bindKeys();
+    for (var i in layouts) {
+        $.getScript(layouts[i], function() {
+            if (++loadedLayouts == layouts.length) {
+                Keyboard.setLanguage('pt_BR');
 
-    webView.setPosition();
+                Keyboard.setView(new View($('#keyboard')));
+                Keyboard.showLayout('mainLayout');
+                Keyboard.bindKeys();
+
+                webView.setPosition();
+            }
+        });
+    }
 };
 
 window.alternativeKeyClicked = function(keyCode) {

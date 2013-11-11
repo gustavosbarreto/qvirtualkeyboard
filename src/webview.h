@@ -13,6 +13,8 @@ public:
 public slots:
     void setPosition();
     void toggle();
+
+    QStringList keyboardLayoutFiles();
 };
 
 class WebPage: public QWebPage
